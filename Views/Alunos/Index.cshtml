@@ -1,0 +1,64 @@
+﻿@model IEnumerable<SGE.Models.Alunos>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Fomularios - Alunos</h1>
+
+<div class="d-grid gap-2 d-md-block">
+    <p>
+        <a asp-action="Create" class="btn btn-primary">Adicionar</a>
+    </p>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cpf)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Telefone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataNascimento)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cpf)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Telefone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataNascimento)
+            </td>
+            <td >
+                 <div class="btn-group" role="group" aria-label="Basic outlined example">
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-primary">Editar</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-primary">Opções</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-outline-primary">Deletar</a>
+                 </div>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
